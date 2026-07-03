@@ -14,11 +14,9 @@ import {
   Rss,
   Twitch,
   type LucideIcon,
-  GlobeIcon,
 } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
-
 
 type LinkItem = {
   title: string;
@@ -90,7 +88,7 @@ const links: LinkItem[] = [
 
 const socials: { icon: LucideIcon; href: string; label: string }[] = [
   { icon: Github, href: 'https://github.com/Akshay-2024', label: 'GitHub' },
-  { icon: GlobeIcon, href: 'https://akshays.me', label: 'Portfolio' },
+  { icon: Globe, href: 'https://akshays.me', label: 'Portfolio' },
   { icon: Linkedin, href: 'https://www.linkedin.com/in/akshay-s-992aa431b', label: 'LinkedIn' },
   { icon: Instagram, href: 'https://instagram.com/ak.s.ay/', label: 'Instagram' },
 ];
@@ -110,16 +108,23 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[hsl(222_47%_7%)] text-white">
-      {/* Ambient gradient blobs */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="animate-float absolute -left-32 -top-32 h-96 w-96 rounded-full bg-blue-600/30 blur-3xl" />
-        <div className="animate-float-slow absolute -right-32 top-1/4 h-[28rem] w-[28rem] rounded-full bg-emerald-500/20 blur-3xl" />
-        <div className="animate-float absolute bottom-0 left-1/3 h-80 w-80 rounded-full bg-fuchsia-500/20 blur-3xl" />
+      {/* Animated aurora layer */}
+      <div className="animate-aurora pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -inset-x-1/4 top-0 h-[60vh] bg-gradient-to-b from-blue-600/20 via-emerald-500/10 to-transparent blur-3xl" />
+        <div className="absolute -inset-x-1/4 bottom-0 h-[50vh] bg-gradient-to-t from-fuchsia-600/15 via-purple-500/10 to-transparent blur-3xl" />
       </div>
 
-      {/* Subtle grid overlay */}
+      {/* Animated gradient orbs */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="animate-orb-1 absolute -left-32 -top-32 h-96 w-96 rounded-full bg-blue-600/30 blur-3xl" />
+        <div className="animate-orb-2 absolute -right-32 top-1/4 h-[28rem] w-[28rem] rounded-full bg-emerald-500/20 blur-3xl" />
+        <div className="animate-orb-3 absolute bottom-0 left-1/3 h-80 w-80 rounded-full bg-fuchsia-500/20 blur-3xl" />
+        <div className="animate-orb-4 absolute right-1/4 bottom-1/4 h-72 w-72 rounded-full bg-cyan-500/15 blur-3xl" />
+      </div>
+
+      {/* Panning grid overlay */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.03]"
+        className="animate-grid-pan pointer-events-none absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage:
             'linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px)',
@@ -143,7 +148,7 @@ export default function Home() {
             </Avatar>
           </div>
 
-          <h1 className="mt-5 text-2xl font-bold tracking-tight sm:text-3xl">
+           <h1 className="mt-5 text-2xl font-bold tracking-tight sm:text-3xl">
             Akshay S
           </h1>
           <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/60 sm:text-base">
